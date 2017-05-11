@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>WineStyle Intern Test</title>
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+</head>
+<body>
+
+<datalist id="profList"></datalist>
+<!-- MODAL FORMS -->
+<div id="modals">
+    <div id="empModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Employment</h4>
+                </div>
+                <div class="modal-body">
+
+                    <form id="empForm" class="form-horizontal" role="form" method="post" enctype="multipart/form-data" action="">
+                        <div class="form-group form-group-sm">
+                            <label class="col-sm-3 control-label" for="empFName">First Name</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" placeholder="First Name" id="empFName" name="empFName">
+                            </div>
+                        </div>
+
+                        <div class="form-group form-group-sm">
+                            <label class="col-sm-3 control-label" for="empSName">Second Name</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" placeholder="Second Name" id="empSName" name="empSName">
+                            </div>
+                        </div>
+
+                        <div class="form-group form-group-sm">
+                            <label class="col-sm-3 control-label" for="empProf">Profession</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" placeholder="Profession" id="empProf" name="empProf" list="profList">
+                            </div>
+                        </div>
+
+                        <div class="form-group form-group-sm">
+                            <label class="col-sm-3 control-label" for="empSalary">Salary per month</label>
+                            <div class="col-sm-8">
+                                <div class="input-group input-group-sm">
+                                    <input type="number" class="form-control" placeholder="Amount" id="empSalary" name="empSalary">
+                                    <div class="input-group-addon">
+                                        <span class="glyphicon glyphicon-eur"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-group-sm">
+                            <label class="col-sm-3 control-label" for="empPortrait">Portrait</label>
+                            <div class="col-sm-8">
+                                <div class="input-group input-group-sm">
+                                    <input type="file" class="form-control" placeholder="Amount" id="empPortrait" name="empPortrait">
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn btn-info" id="empSubmit">Proceed</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="bnsModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Bonuses</h4>
+                </div>
+                <div class="modal-body">
+
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group form-group-sm">
+                            <label class="col-sm-3 control-label" for="bnsMonth">Month</label>
+                            <div class="col-sm-8">
+                                <input type="date" class="form-control" id="bnsMonth" name="bnsMonth">
+                            </div>
+                        </div>
+
+                        <div class="form-group form-group-sm">
+                            <label class="col-sm-3 control-label" for="bnsProf">Profession</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" placeholder="Profession" id="bnsProf" name="bnsProf" list="profList">
+                            </div>
+                        </div>
+
+                        <div class="form-group form-group-sm">
+                            <label class="col-sm-3 control-label" for="bnsAmount">Amount</label>
+                            <div class="col-sm-8">
+                                <div class="input-group input-group-sm">
+                                    <input type="number" class="form-control" placeholder="Amount" id="bnsAmount" name="bnsAmount">
+                                    <div class="input-group-addon">
+                                        <span class="glyphicon glyphicon-eur"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn btn-info" id="bnsSubmit">Check out!</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- HEADER -->
+<nav class="navbar">
+    <div class="container">
+        <div class="navbar-header">
+            <div class="navbar-brand">
+                <a href="#">
+                    <img src="assets/img/logo.png" alt="WineStyle" class="img-responsive">
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+<!-- CONTENT -->
+<div class="container">
+    <div class="row">
+
+        <!-- SETTINGS -->
+        <div class="col-sm-4 col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Settings</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label for="settingsDate" class="sr-only control-label"></label>
+                        <input type="date" class="form-control" id="settingsDate" name="settingsDate">
+                    </div>
+                    <div class="well well-sm">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-xs-2 col-xs-offset-1">
+                                    <span class="glyphicon glyphicon-rub currOff" id="rub"></span>
+                                </div>
+                                <div class="col-xs-2 col-xs-offset-2">
+                                    <span class="glyphicon glyphicon-eur currOn" id="eur"></span>
+                                </div>
+                                <div class="col-xs-2 col-xs-offset-2">
+                                    <span class="glyphicon glyphicon-usd currOff" id="usd"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a data-toggle="modal" data-target="#empModal">Add employee</a><br>
+                    <a data-toggle="modal" data-target="#bnsModal">Bonuses</a><br>
+                </div>
+            </div>
+        </div>
+
+        <!-- EMPLOYEE LIST -->
+        <div class="col-sm-8 col-xs-12 pull-right">
+            <div class="container-fluid">
+                <table class="table table-striped" id="employeeTable">
+                    <tr>
+                        <th class='text-center'></th>
+                        <th class='text-left'>Employee Information</th>
+                        <th class='text-center'>Salary</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<script src="assets/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="assets/js/custom.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+.navbar-brand {
+    transform: translateX(-50%);
+    left: 50%;
+    position: absolute;
+}
+
+.navbar {
+     height: 100px;
+}
+
+.profession {
+    color: grey;
+}
+
+.name {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+a>img.zoom-in {
+    cursor: zoom-in; !important;
+}
+
+#rub, #eur, #usd {
+    cursor: pointer; !important;
+    cursor: hand; !important;
+}
+
+.currOff {
+    color: grey;
+}
+
+.currOn {
+    color: black;
+}
