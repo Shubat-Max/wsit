@@ -1,0 +1,49 @@
+>>>>> MySQL – хранение данных о зарплате сотрудников.
+1	Написать запросы:
+o	Создать справочник "professions". Добавить профессии: бухгалтер, курьер, менеджер.
+CREATE TABLE IF NOT EXISTS 'professions' (
+  'id' int(11) NOT NULL AUTO_INCREMENT,
+  'name' text NOT NULL,
+  PRIMARY KEY (id),
+  UNIQUE KEY 'id' (id));
+  
+INSERT INTO wsit_db.professions (name) VALUES ('Manager'), ('Accountant'), ('Courier');
+
+
+
+o	Создать таблицу "workers". Структура: ключевое поле, имя, фамилия, должность, зарплата, ссылка на фото.
+CREATE TABLE IF NOT EXISTS 'workers' (
+  'id' int(11) NOT NULL AUTO_INCREMENT,
+  'f_name' text NOT NULL,
+  's_name' text NOT NULL,
+  'prof_id' int(11) NOT NULL,
+  'salary' double NOT NULL,
+  'portrait' text NOT NULL,
+  PRIMARY KEY (id),
+  UNIQUE KEY 'id' (id));
+
+
+  
+o	Создать таблицу "payment". Таблица будет хранить зарплату сотрудников с учетом премии. Зарплату храним отдельно за каждый месяц.
+CREATE TABLE IF NOT EXISTS  `payments` (
+ `worker_id` INT( 11 ) NOT NULL ,
+ `date` DATE NOT NULL ,
+ `toPay` INT( 11 ) NOT NULL DEFAULT  '1',
+ `bonus` DOUBLE NOT NULL DEFAULT  '0',
+PRIMARY KEY (  `worker_id` ,  `date` ));
+
+
+
+o	Добавить 15 сотрудников. Использовать справочник профессий. Колонку с зарплатой рассчитать в случайном порядке.
+INSERT INTO `wsit_db`.`workers` (`f_name`, `s_name`, `prof_id`, `salary`, `portrait`) 
+VALUES 
+('Scott', 'Howard', (SELECT p.id FROM professions as p WHERE p.name = 'Manager' LIMIT 1), FLOOR(RAND()*(3000-2000+1))+2000, '41.jpg'),
+('Derek', 'Ray', (SELECT p.id FROM professions as p WHERE p.name = 'Manager' LIMIT 1), FLOOR(RAND()*(3000-2000+1))+2000, '36.jpg'),
+('Jeremiah', 'Campbell', (SELECT p.id FROM professions as p WHERE p.name = 'Manager' LIMIT 1), FLOOR(RAND()*(3000-2000+1))+2000, '80.jpg'),
+('Terry', 'Spencer', (SELECT p.id FROM professions as p WHERE p.name = 'Accountant' LIMIT 1), FLOOR(RAND()*(3000-2000+1))+2000, '11.jpg'),
+('Melanie', 'Coleman', (SELECT p.id FROM professions as p WHERE p.name = 'Accountant' LIMIT 1), FLOOR(RAND()*(2000-1000+1))+1000, '21.jpg'),
+('Cathy', 'Holland', (SELECT p.id FROM professions as p WHERE p.name = 'Accountant' LIMIT 1), FLOOR(RAND()*(2000-1000+1))+1000, '55.jpg'), 
+('Franklin', 'Richardson', (SELECT p.id FROM professions as p WHERE p.name = 'Courier' LIMIT 1), FLOOR(RAND()*(1000-500+1))+500, '17.jpg'),
+('Genesis', 'White', (SELECT p.id FROM professions as p WHERE p.name = 'Courier' LIMIT 1), FLOOR(RAND()*(1000-500+1))+500, '66.jpg'),
+('Brandie', 'Smith', (SELECT p.id FROM professions as p WHERE p.name = 'Courier' LIMIT 1), FLOOR(RAND()*(1000-500+1))+500, '60.jpg');
+
